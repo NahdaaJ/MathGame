@@ -1,9 +1,5 @@
 ﻿using MySqlConnector;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace MathGame
 {
@@ -27,11 +23,18 @@ namespace MathGame
             cmd.ExecuteNonQuery();
             return cmd;
         }
-        internal void AddGameHistory(string gameType, int score)
+        internal void AddGameHistory(string gameType, int score, string difficulty)
         {
             var cmd = commandDB();
             var date = DateTime.Now.ToString("yyyy-MM-dd");
-            string insertString = $"INSERT INTO game_history (game_date, game_type, score) VALUES('{date}','{gameType}',{score});";
+            string diff="";
+            if (difficulty == "e")
+                diff = "Easy";
+            else if (difficulty == "m")
+                diff = "Medium";
+            else if (difficulty == "h")
+                diff = "Hard";
+            string insertString = $"INSERT INTO game_history (game_date, game_type, score, game_difficulty) VALUES('{date}','{gameType}',{score},'{diff}');";
             cmd.CommandText = insertString;
             cmd.ExecuteNonQuery();
         }
@@ -70,17 +73,17 @@ namespace MathGame
             using MySqlDataReader rdr = cmd1.ExecuteReader();
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine("---------------- Game History ----------------");
+            Console.WriteLine("----------------------- Game History -----------------------");
             Console.WriteLine();
-            Console.WriteLine("   Date           Game Type           Score   ");
-            Console.WriteLine("----------     ---------------     -----------");
+            Console.WriteLine("   Date           Game Type          Score       Difficulty");
+            Console.WriteLine("----------     ---------------     ---------     ----------");
             while (rdr.Read())
             {
                 // Console.WriteLine($"Date: {rdr.GetDateOnly(0)} Game: {rdr.GetString(1)} Score: {rdr.GetInt32(2)}");
-                Console.WriteLine("{0}{1,20}{2,10}", rdr.GetDateOnly(0), rdr.GetString(1), rdr.GetInt32(2));
+                Console.WriteLine("{0}{1,20}{2,10}{3,15}", rdr.GetDateOnly(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetString(3));
             }
 
-            Console.WriteLine("-------------------------------------------------------");
+            Console.WriteLine("------------------------------------------------------------");
             Console.WriteLine("Press enter to return to main menu.");
             Console.ReadLine();
         }

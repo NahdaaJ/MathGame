@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
+﻿using System.Configuration;
 
 namespace MathGame
 {
@@ -64,41 +59,6 @@ G - All Game Types");
             choices[0] = order;
             choices[1] = type;
             return choices;
-        }
-        static internal int[] GetDivisionNumbers()
-        {
-            var random = new Random();
-            var firstNumber = random.Next(0, 100);
-            var secondNumber = random.Next(1, 100);
-            var divisibleNumbers = new int[2];
-
-            while (firstNumber % secondNumber != 0)
-            {
-                firstNumber = random.Next(0, 100);
-                secondNumber = random.Next(1, 100);
-            }
-
-            divisibleNumbers[0] = firstNumber;
-            divisibleNumbers[1] = secondNumber;
-            return divisibleNumbers;
-        }
-        static internal int[] GetSubtractionNumbers()
-        {
-            var random = new Random();
-            var firstNumber = random.Next(0, 100);
-            var secondNumber = random.Next(1, 100);
-            var divisibleNumbers = new int[2];
-
-            while (firstNumber < secondNumber)
-            {
-                firstNumber = random.Next(0, 100);
-                secondNumber = random.Next(1, 100);
-            }
-
-            divisibleNumbers[0] = firstNumber;
-            divisibleNumbers[1] = secondNumber;
-            return divisibleNumbers;
-
         }
     }
 }

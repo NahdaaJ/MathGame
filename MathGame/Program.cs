@@ -1,5 +1,4 @@
 ﻿using MathGame;
-using MySqlConnector;
 
 var menu = new Menu();
 menu.ShowMenu();

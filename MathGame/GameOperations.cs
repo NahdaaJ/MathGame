@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MathGame
+﻿namespace MathGame
 {
     internal class GameOperations
     {
-        internal void AdditionGame()
+        internal void AdditionGame(string difficulty)
         {
             var databaseOPS = new DatabaseOperations();
             var random = new Random();
-            int firstNumber;
-            int secondNumber;
             int correctAnswer;
             int score = 0;
 
@@ -22,13 +14,14 @@ namespace MathGame
                 Console.Clear();
                 string input = "";
                 var inputType = false;
-                firstNumber = random.Next(0, 100);
-                secondNumber = random.Next(0, 100);
-                correctAnswer = firstNumber + secondNumber;
+                var difficultyNum = new int[2];
+                difficultyNum = DifficultySettings.DifficultySetter(difficulty, "a");
+
+                correctAnswer = difficultyNum[0] + difficultyNum[1];
 
                 while (!inputType)
                 {
-                    Console.WriteLine($"{firstNumber} + {secondNumber} =");
+                    Console.WriteLine($"{difficultyNum[0]} + {difficultyNum[1]} =");
                     var result = Console.ReadLine();
 
                     if (String.IsNullOrWhiteSpace(result) || !int.TryParse(result, out _))
@@ -70,12 +63,12 @@ namespace MathGame
             Console.WriteLine($"Your final score for the Addition Game was {score}/10 .");
 
             var gameType = "Addition";
-            databaseOPS.AddGameHistory(gameType, score);
+            databaseOPS.AddGameHistory(gameType, score, difficulty);
 
             Console.WriteLine("Press any key to return to main menu.");
             Console.ReadLine();
         }
-        internal void SubtractionGame()
+        internal void SubtractionGame(string difficulty)
         {
             var databaseOPS = new DatabaseOperations();
             var random = new Random();
@@ -85,15 +78,14 @@ namespace MathGame
             for (int i = 0; i < 10; i++)
             {
                 Console.Clear();
-
-                var nonNegative = Helper.GetSubtractionNumbers();
-                correctAnswer = nonNegative[0] - nonNegative[1];
                 string input="";
                 var inputType = false;
+                var difficultyNum = DifficultySettings.DifficultySetter(difficulty, "s");
+                correctAnswer = difficultyNum[0] - difficultyNum[1];
 
                 while (!inputType)
                 {
-                    Console.WriteLine($"{nonNegative[0]} - {nonNegative[1]} =");
+                    Console.WriteLine($"{difficultyNum[0]} - {difficultyNum[1]} =");
                     var result = Console.ReadLine();
 
                     if (String.IsNullOrWhiteSpace(result) || !int.TryParse(result,out _))
@@ -136,12 +128,12 @@ namespace MathGame
             Console.WriteLine($"Your final score was {score}/10");
 
             var gameType = "Subtraction";
-            databaseOPS.AddGameHistory(gameType, score);
+            databaseOPS.AddGameHistory(gameType, score, difficulty);
 
             Console.WriteLine("Press any key to return to main menu.");
             Console.ReadLine();
         }
-        internal void MultiplicationGame()
+        internal void MultiplicationGame(string difficulty)
         {
             var databaseOPS = new DatabaseOperations();
             var random = new Random();
@@ -153,15 +145,14 @@ namespace MathGame
             for (int i = 0; i < 10; i++)
             {
                 Console.Clear();
-                firstNumber = random.Next(0, 10);
-                secondNumber = random.Next(0, 20);
-                correctAnswer = firstNumber * secondNumber;
                 string input = "";
                 var inputType = false;
+                var difficultyNum = DifficultySettings.DifficultySetter(difficulty, "m");
+                correctAnswer = difficultyNum[0] * difficultyNum[1];
 
                 while (!inputType)
                 {
-                    Console.WriteLine($"{firstNumber} x {secondNumber} =");
+                    Console.WriteLine($"{difficultyNum[0]} x {difficultyNum[1]} =");
                     var result = Console.ReadLine();
 
                     if (String.IsNullOrWhiteSpace(result) || !int.TryParse(result, out _))
@@ -203,12 +194,12 @@ namespace MathGame
             Console.WriteLine($"Your final score was {score}/10");
 
             var gameType = "Multiplication";
-            databaseOPS.AddGameHistory(gameType, score);
+            databaseOPS.AddGameHistory(gameType, score, difficulty);
 
             Console.WriteLine("Press any key to return to main menu.");
             Console.ReadLine();
         }
-        internal void DivisionGame()
+        internal void DivisionGame(string difficulty)
         {
             var databaseOPS = new DatabaseOperations();
             int correctAnswer;
@@ -219,13 +210,13 @@ namespace MathGame
                 Console.Clear();
                 string input = "";
                 var inputType = false;
-                var divisibleNumbers = Helper.GetDivisionNumbers();
-                correctAnswer = divisibleNumbers[0] / divisibleNumbers[1];
+                var difficultyNum = DifficultySettings.DifficultySetter(difficulty, "d");
+                correctAnswer = difficultyNum[0] / difficultyNum[1];
 
 
                 while (!inputType)
                 {
-                    Console.WriteLine($"{divisibleNumbers[0]} ÷ {divisibleNumbers[1]} =");
+                    Console.WriteLine($"{difficultyNum[0]} ÷ {difficultyNum[1]} =");
                     var result = Console.ReadLine();
 
                     if (String.IsNullOrWhiteSpace(result) || !int.TryParse(result, out _))
@@ -267,7 +258,7 @@ namespace MathGame
             Console.WriteLine($"Your final score was {score}/10");
 
             var gameType = "Division";
-            databaseOPS.AddGameHistory(gameType, score);
+            databaseOPS.AddGameHistory(gameType, score, difficulty);
 
             Console.WriteLine("Press any key to return to main menu.");
             Console.ReadLine();
