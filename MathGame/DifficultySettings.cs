@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace MathGame
 {
     internal static class DifficultySettings
@@ -74,7 +69,6 @@ H - Hard");
                 return subtractNumbers;
             }
             else { return null; }
-
         }
         internal static int[] SetDifficultyMedium(string gameType)
         {
@@ -132,9 +126,7 @@ H - Hard");
                 return divisibleNumbers;
             }
             else { return null; }
-
         }
-
         internal static int[] DifficultySetter(string difficulty, string gameType)
         {
             var difficultyNum = new int[2];
@@ -153,8 +145,5 @@ H - Hard");
             }
             return difficultyNum;
         }
-
-
-
     }
 }
