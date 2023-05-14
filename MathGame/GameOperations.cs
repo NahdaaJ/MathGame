@@ -48,7 +48,8 @@
                 Console.WriteLine("-------------------------------------------------------");
                 Console.WriteLine($"Score: {score}");
                 Console.WriteLine("-------------------------------------------------------");
-                if (i != 9)
+
+                if (i != 9) // Displays a different message if it's the last round.
                 {
                     Console.WriteLine("Press enter for next question.");
                     Console.ReadLine();
@@ -113,7 +114,7 @@
                 Console.WriteLine($"Score: {score}");
                 Console.WriteLine("-------------------------------------------------------");
 
-                if (i != 9)
+                if (i != 9) // Displays a different message if it's the last round.
                 {
                     Console.WriteLine("Press enter for next question.");
                     Console.ReadLine();
@@ -137,8 +138,6 @@
         {
             var databaseOPS = new DatabaseOperations();
             var random = new Random();
-            int firstNumber;
-            int secondNumber;
             int correctAnswer;
             int score = 0;
 
@@ -179,7 +178,8 @@
                 Console.WriteLine("-------------------------------------------------------");
                 Console.WriteLine($"Score: {score}");
                 Console.WriteLine("-------------------------------------------------------");
-                if (i != 9)
+
+                if (i != 9) // Displays a different message if it's the last round.
                 {
                     Console.WriteLine("Press enter for next question.");
                     Console.ReadLine();
@@ -243,7 +243,8 @@
                 Console.WriteLine("-------------------------------------------------------");
                 Console.WriteLine($"Score: {score}");
                 Console.WriteLine("-------------------------------------------------------");
-                if (i != 9)
+
+                if (i != 9) // Displays a different message if it's the last round.
                 {
                     Console.WriteLine("Press enter for next question.");
                     Console.ReadLine();

@@ -6,10 +6,12 @@ namespace MathGame
     {
         public static string ConnValue(string name)
         {
+            // Returns connectionString from App.config
             return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
         static internal string[] chooseView()
         {
+            // Asking the user for inputs on what they want to view in the game history.
             var choices = new string[2];
             var inputCorrect1 = false;
             var inputCorrect2 = false;

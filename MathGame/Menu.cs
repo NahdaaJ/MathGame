@@ -7,9 +7,6 @@
             var date = DateTime.Now;
             var isGameOn = true;
 
-            // do while loops will run at least once since condition evaluation is at the end.
-            // while loops only run if condition is true from the start.
-
             var difficulty = "e";
             var diff = "Easy";
            
@@ -19,7 +16,6 @@
                 Console.WriteLine("-------------------------------------------------------");
                 Console.WriteLine($"Hello player, it's {date.DayOfWeek}!");
 
-                // Displaying multiline text to the console using @.
                 Console.WriteLine($@"What game would you like to play?
 A - Addition
 S - Subtraction
